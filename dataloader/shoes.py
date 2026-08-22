@@ -9,16 +9,44 @@ from dataloader.dataset import targetpad_transform
 
 
 class ShoesDataset(Dataset):
-    def __init__(self, split, mode="relative", preprocess=targetpad_transform(target_ratio=1.25, dim=640)):
+    def __init__(
+        self,
+        split,
+        mode="relative",
+        preprocess=targetpad_transform(target_ratio=1.25, dim=288)
+    ):
         self.mode = mode
         self.split = split
         self.preprocess = preprocess
+
+        # Dataset root trên Google Colab
         self.base_path = "/content/shoes_dataset"
-        self.local_feature_path = os.path.join(self.base_path,"shoes_local_feature_13"
-)
-        self.image_id2name = self.load_file(os.path.join(self.shoes_path, f'split.{split}.json'))
+
+        # Shoes dataset path
+        self.shoes_path = self.base_path
+
+        # Local CLIP features
+        self.local_feature_path = os.path.join(
+            self.base_path,
+            "shoes_local_feature_13"
+        )
+
+        # Load image mapping
+        self.image_id2name = self.load_file(
+            os.path.join(
+                self.shoes_path,
+                f"split.{split}.json"
+            )
+        )
+
+        # Load relative annotations
         if self.mode == "relative":
-            self.annotations = self.load_file(os.path.join(self.shoes_path, f'triplet.{split}.json'))
+            self.annotations = self.load_file(
+                os.path.join(
+                    self.shoes_path,
+                    f"triplet.{split}.json"
+                )
+            )
 
     def __getitem__(self, index):
         if self.mode == "relative":  # 返回三元组形式
