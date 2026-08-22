@@ -57,9 +57,16 @@ class ShoesDataset(Dataset):
             reference_name = reference_path.split('/')[-1].split(".jpg")[0]
             target_name = target_path.split('/')[-1].split(".jpg")[0]
 
-            ref_local_path = self.local_feature_path + f"{reference_name}.pth"
+            ref_local_path = os.path.join(
+                self.local_feature_path,
+                f"{reference_name}.pth"
+            )
             ref_patch_feat = torch.load(ref_local_path)
-            tar_local_path = self.local_feature_path + f"{target_name}.pth"
+           
+            tar_local_path = os.path.join(
+                self.local_feature_path,
+                f"{target_name}.pth"
+            )
             tar_patch_feat = torch.load(tar_local_path)
 
             if self.split == "train":
