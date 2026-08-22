@@ -13,8 +13,8 @@ class ShoesDataset(Dataset):
         self.mode = mode
         self.split = split
         self.preprocess = preprocess
-        self.shoes_path = "/mnt/vision_retrieval/chenyanzhe/shoes_dataset/"
-        self.local_feature_path = '/mnt/vision_retrieval/chenyanzhe/shoes_dataset/shoes_local_feature_13/'
+        self.shoes_path = "/Users/huynhthithanhvi/Projects/FashionERN/datasets/shoes_dataset/"
+        self.local_feature_path = "/Users/huynhthithanhvi/Projects/FashionERN/datasets/shoes_dataset/shoes_local_feature_13/"
         self.image_id2name = self.load_file(os.path.join(self.shoes_path, f'split.{split}.json'))
         if self.mode == "relative":
             self.annotations = self.load_file(os.path.join(self.shoes_path, f'triplet.{split}.json'))

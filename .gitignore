@@ -1,0 +1,58 @@
+# Datasets — never upload
+fashion-iq/
+fashioniq/
+FashionIQ/
+shoes_dataset/
+fashion200k/
+Fashion200K/
+CIRR/
+datasets/
+data/
+
+# Precomputed/local features
+*_local_feature_*/
+local_features/
+features/
+*.pth
+*.pt
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Training artifacts / weights / logs
+ckpt/
+checkpoints/
+weights/
+runs/
+wandb/
+tensorboard/
+*.ckpt
+*.pth.tar
+*.onnx
+*.safetensors
+*.log
+
+# Python environments and caches
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Secrets and machine-specific configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+service_account*.json
+
+# macOS / editors
+.DS_Store
+.vscode/
+.idea/
